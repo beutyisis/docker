@@ -7,7 +7,7 @@ api = Api(app)
 
 class Product(Resource):
    def get(self):
-      return {'asdf','asdf','asdf'}
+      return {"product":['asdf', 'asdf','asdf']}
 
 
 #create routes
@@ -15,5 +15,5 @@ api.add_resource(Product, '/')
 
 
 # run the application
-if __name__ = '__main__':
+if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
