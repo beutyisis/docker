@@ -1,12 +1,18 @@
 version: '3'
 
 services:
-  product-service:
-    build: ./product
+  python-service:
+    build: ./microservices/python
     volumes:
-      - ./product:/usr/src/app
+      - ./microservices/python:/usr/src/app
     ports:
       - 5001:80
+
+  golang-service:
+    build: ./microservices/golang
+    volumes:
+      - ./microservices/golang:/go/src/go-with-compose
+    working_dir: /go/src/go-with-compose
   
   website:
     image: php:apache
@@ -15,4 +21,5 @@ services:
     ports:
       - 5000:80
     depends_on:
-      - product-service
+      - python-service
+      - golang-service
